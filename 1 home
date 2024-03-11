@@ -1,0 +1,30 @@
+def total_salary(path):
+    total = 0
+    count = 0
+    
+    try:
+        with open(path, 'r', encoding='utf-8') as file:
+            for line in file:
+                name, salary = line.strip().split(';')
+                total += int(salary)
+                count +=
+    except FileNotFoundError:
+        print("Файл не знайдено.")
+        return None
+    except Exception as e:
+        print(f"Сталася помилка: {e}")
+        return None
+    
+    if count == 0:
+        print("Файл порожній.")
+        return None
+    
+    average_salary = total / count
+    return total, average_salary
+
+path = "data.txt"
+result = total_salary(path)
+if result:
+    total, average = result
+    print(f"Загальна сума зарплат: {total}")
+    print(f"Середня зарплата: {average}")
